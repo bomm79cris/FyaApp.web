@@ -20,35 +20,19 @@ jobs:
           submodules: true
           lfs: false
 
-      # 🔹 Instalar dependencias
-      - name: Install dependencies
-        run: npm install
-
-      # 🔹 Construir la app Angular (desactiva SSR si quieres SPA)
-      - name: Build Angular app
-        run: npm run build -- --configuration production
-
-      # 🔹 Renombrar el archivo generado
-      - name: Rename CSR index file
-        run: |
-          if [ -f dist/fya-app/browser/index.csr.html ]; then
-            mv dist/fya-app/browser/index.csr.html dist/fya-app/browser/index.html
-            echo "Renamed index.csr.html to index.html"
-          else
-            echo "index.csr.html not found. Build may not have completed as expected."
-          fi
-
-      # 🔹 Desplegar a Azure Static Web Apps
-      - name: Deploy to Azure Static Web Apps
+      - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_NICE_FOREST_03DC2B30F }}
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }} # Used for Github integrations (i.e. PR comments)
           action: "upload"
-          app_location: "/"
-          api_location: ""
-          output_location: "dist/fya-app/browser"
+          ###### Repository/Build Configurations - These values can be configured to match your app requirements. ######
+          # For more information regarding Static Web App workflow configurations, please visit: https://aka.ms/swaworkflowconfig
+          app_location: "/" # App source code path
+          api_location: "" # Api source code path - optional
+          output_location: "dist/" # Built app content directory - optional
+          ###### End of Repository/Build Configurations ######
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
@@ -61,3 +45,7 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_NICE_FOREST_03DC2B30F }}
           action: "close"
+
+
+
+
