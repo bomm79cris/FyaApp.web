@@ -1,19 +1,54 @@
-<div class="d-flex justify-content-center align-items-center vh-100 bg-light">
-  <div class="card p-4 shadow-lg" style="width: 350px;">
-    <h4 class="text-center mb-4">Iniciar Sesión</h4>
 
-    <div class="mb-3">
-      <label>Usuario</label>
-      <input class="form-control" [(ngModel)]="userName" />
+<div class="login">
+    <div class="login-container">
+    <h3 class="text-center mb-4">Iniciar Sesión</h3>
+
+    <form (ngSubmit)="onLogin()" autocomplete="off">
+      <div class="mb-3">
+        <label for="userName" class="form-label">Usuario</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="pi pi-user"></i></span>
+          <input
+            id="userName"
+            type="text"
+            class="form-control"
+            [(ngModel)]="userName"
+            name="userName"
+            placeholder="Nombre de usuario"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Contraseña</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="pi pi-lock"></i></span>
+          <input
+            id="password"
+            type="password"
+            class="form-control"
+            [(ngModel)]="password"
+            name="password"
+            placeholder="Contraseña"
+            required
+          />
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="loading"
+      >
+        {{ loading ? 'Ingresando...' : 'Entrar' }}
+      </button>
+
+     
+    </form>
+
+    <div class="login-footer">
+      &copy; {{ 2025 }} Sistema de Créditos FYA
     </div>
-
-    <div class="mb-3">
-      <label>Contraseña</label>
-      <input type="password" class="form-control" [(ngModel)]="password" />
     </div>
-
-    <button class="btn btn-primary w-100" (click)="onLogin()" [disabled]="loading">
-      {{ loading ? 'Ingresando...' : 'Entrar' }}
-    </button>
-  </div>
 </div>
