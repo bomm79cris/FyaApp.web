@@ -1,0 +1,43 @@
+<p-card>
+    <div class="header-container">
+  <h2><i class="pi pi-table"></i> Créditos Registrados</h2>
+  <button
+    pButton
+    type="button"
+    label="+ Nuevo Crédito"
+    icon="pi pi-plus"
+    class="p-button-primary"
+    routerLink="/credits/register">
+  </button>
+</div>
+
+  <div class="p-input-icon-left" style="margin-bottom: 1rem;">
+    <i class="pi pi-search"></i>
+    <input pInputText type="text" placeholder="Buscar cliente o comercial..." [(ngModel)]="filter" (input)="filterCredits()" />
+  </div>
+
+  <p-table [value]="filteredCredits" [paginator]="true" [rows]="5" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="customerName">Cliente <p-sortIcon field="customerName"></p-sortIcon></th>
+        <th pSortableColumn="customerIdNumber">Cédula / ID <p-sortIcon field="customerIdNumber"></p-sortIcon></th>
+        <th pSortableColumn="amount">Valor del crédito <p-sortIcon field="amount"></p-sortIcon></th>
+        <th>Tasa de interés</th>
+        <th>Plazo</th>
+        <th>Comercial</th>
+        <th pSortableColumn="createdAt">Fecha de registro <p-sortIcon field="createdAt"></p-sortIcon></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-credit>
+      <tr>
+        <td>{{ credit.customerName }}</td>
+        <td>{{ credit.customerIdNumber }}</td>
+        <td>{{ credit.amount | currency:'COP':'symbol-narrow' }}</td>
+        <td>{{ credit.interestRate }}%</td>
+        <td>{{ credit.termMonths }} meses</td>
+        <td>{{ credit.commercialName }}</td>
+        <td>{{ credit.createdAt | date:'dd/MM/yyyy HH:mm' }}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</p-card>

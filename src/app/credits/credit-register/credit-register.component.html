@@ -1,0 +1,89 @@
+<div class="register-wrapper">
+  <p-card header="Registrar Crédito" class="register-card">
+    <form #creditForm="ngForm" autocomplete="off">
+      <div class="form-body">
+        <div class="p-fluid">
+          <div class="p-field">
+            <label for="customerName">Nombre del cliente</label>
+            <input
+              id="customerName"
+              type="text"
+              pInputText
+              [(ngModel)]="model.customerName"
+              name="customerName"
+              required
+            />
+          </div>
+
+          <div class="p-field">
+            <label for="customerIdNumber">Cédula / ID</label>
+            <input
+              id="customerIdNumber"
+              type="text"
+              pInputText
+              [(ngModel)]="model.customerIdNumber"
+              name="customerIdNumber"
+              required
+            />
+          </div>
+
+          <div class="p-field">
+            <label for="amount">Valor del crédito</label>
+            <input
+              id="amount"
+              type="number"
+              pInputText
+              [(ngModel)]="model.amount"
+              name="amount"
+              required
+            />
+          </div>
+
+          <div class="p-field">
+            <label for="interestRate">Tasa de interés (%)</label>
+            <input
+              id="interestRate"
+              type="number"
+              pInputText
+              [(ngModel)]="model.interestRate"
+              name="interestRate"
+              required
+            />
+          </div>
+
+          <div class="p-field">
+            <label for="termMonths">Plazo (meses)</label>
+            <input
+              id="termMonths"
+              type="number"
+              pInputText
+              [(ngModel)]="model.termMonths"
+              name="termMonths"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button
+            pButton
+            type="button"
+            label="Cancelar"
+            icon="pi pi-times"
+            class="p-button-outlined p-button-secondary"
+            routerLink="/credits"
+          ></button>
+          <button
+            pButton
+            type="button"
+            label="Registrar"
+            icon="pi pi-check"
+            class="p-button-primary"
+            [disabled]="!creditForm.valid"
+            (click)="register()"
+          ></button>
+        </div>
+      </div>
+    </form>
+  </p-card>
+</div>

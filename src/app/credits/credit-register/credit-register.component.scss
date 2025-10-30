@@ -1,0 +1,66 @@
+.register-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8fafc; // fondo gris claro
+  padding: 1rem;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 420px; // tamaño mediano
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+  ::ng-deep .p-card-header {
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1e3a8a; // azul corporativo FYA
+    background-color: #f1f5f9;
+    border-bottom: 1px solid #e2e8f0;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 1rem;
+  }
+
+  ::ng-deep .p-card-body {
+    padding: 2rem;
+  }
+
+  label {
+    font-weight: 500;
+    color: #475569;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  input[pInputText] {
+    border-radius: 6px;
+    border: 1px solid #cbd5e1;
+    height: 2.4rem;
+    font-size: 0.95rem;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+
+    .p-button {
+      width: 48%;
+      font-weight: 500;
+      padding: 0.7rem 0;
+    }
+
+    .p-button-primary {
+      background-color: #2563eb;
+      border: none;
+
+      &:hover {
+        background-color: #1d4ed8;
+      }
+    }
+  }
+}
