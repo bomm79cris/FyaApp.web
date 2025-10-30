@@ -19,8 +19,6 @@ jobs:
         with:
           submodules: true
           lfs: false
-      - name: Rename CSR index file
-        run: mv dist/fya-app/browser/index.csr.html dist/fya-app/browser/index.html
 
       - name: Build And Deploy
         id: builddeploy
@@ -47,6 +45,7 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_NICE_FOREST_03DC2B30F }}
           action: "close"
+
 
 
 
